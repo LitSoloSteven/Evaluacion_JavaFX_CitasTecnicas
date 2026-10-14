@@ -37,3 +37,24 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# --- Entorno / credenciales -----------------------------------------
+.env
+.env.local
+.env.*.local
+
+# Pero el ejemplo SÍ se versiona (plantilla sin secretos)
+!.env.example
+
+# --- Java / Maven ---------------------------------------------------
+*.class
+*.jar
+
+# --- IntelliJ IDEA --------------------------------------------------
+.idea/
+out/
+
+# --- Logs y temporales ----------------------------------------------
+*.log
+hs_err_pid*
+Thumbs.db
