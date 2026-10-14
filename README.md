@@ -40,10 +40,10 @@ Los estados admitidos para una cita son **Pendiente**, **En proceso**, **Finaliz
 
 | Integrante | Usuario de GitHub | Responsabilidades |
 |---|---|---|
-| **Carlos [apellidos]** | `@[usuario]` | Diseño y creación de la base de datos y script SQL; conexión centralizada mediante `ConexionBD.java`; modelo `Cliente.java`; implementación de `ClienteDAO.java`, CRUD y búsqueda de clientes; gestión de errores JDBC. |
-| **Keneth [apellidos]** | `@[usuario]` | Modelo `CitaTecnica.java`; implementación de `CitaTecnicaDAO.java` y CRUD de citas; consultas `JOIN` entre clientes y citas; consultas de filtrado por estado y fecha; integridad de relaciones. |
-| **Steven [apellidos]** | `@[usuario]` | Diseño de las vistas `ClienteView.fxml` y `CitaTecnicaView.fxml`; implementación de `ClienteController.java`; configuración de formularios, `TableView`, búsqueda visual, navegación y actualización de registros en pantalla. |
-| **Kate [apellidos]** | `@[usuario]` | Implementación de `CitaTecnicaController.java`; integración del CRUD de citas con la interfaz; selección de clientes y filtros visuales; implementación de `Validador.java` y `AlertUtil.java`; manejo de validaciones, confirmaciones y alertas. |
+| **Carlos Rodriguez** | `@cerf007` | Diseño y creación de la base de datos y script SQL; conexión centralizada mediante `ConexionBD.java`; modelo `Cliente.java`; implementación de `ClienteDAO.java`, CRUD y búsqueda de clientes; gestión de errores JDBC. |
+| **Kenneth Zamora** | `@Proexample12` | Modelo `CitaTecnica.java`; implementación de `CitaTecnicaDAO.java` y CRUD de citas; consultas `JOIN` entre clientes y citas; consultas de filtrado por estado y fecha; integridad de relaciones. |
+| **Steven Steven** | `@LitSoloSteven` | Diseño de las vistas `ClienteView.fxml` y `CitaTecnicaView.fxml`; implementación de `ClienteController.java`; configuración de formularios, `TableView`, búsqueda visual, navegación y actualización de registros en pantalla. |
+| **Kate Ramirez** | `@kateV1013` | Implementación de `CitaTecnicaController.java`; integración del CRUD de citas con la interfaz; selección de clientes y filtros visuales; implementación de `Validador.java` y `AlertUtil.java`; manejo de validaciones, confirmaciones y alertas. |
 
 La integración y las pruebas generales de funcionamiento son responsabilidad compartida de los cuatro integrantes. Cada integrante debe conocer su módulo y el flujo general de conexión y persistencia de datos mediante JDBC.
 
