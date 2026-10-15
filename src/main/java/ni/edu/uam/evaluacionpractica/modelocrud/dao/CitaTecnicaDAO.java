@@ -3,6 +3,7 @@ package ni.edu.uam.evaluacionpractica.modelocrud.dao;
 import ni.edu.uam.evaluacionpractica.modelocrud.interfaces.CrudRepository;
 import ni.edu.uam.evaluacionpractica.modelocrud.model.CitaTecnica;
 import ni.edu.uam.evaluacionpractica.utils.ConexionBD;
+import ni.edu.uam.evaluacionpractica.utils.Validador;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -37,6 +38,7 @@ public class CitaTecnicaDAO implements CrudRepository<CitaTecnica, Integer> {
     @Override
     public boolean insertar(CitaTecnica cita) throws SQLException {
         validar(cita);
+        validarProgramacion(cita, null);
         try (Connection cn = ConexionBD.abrirConexion()) {
             comprobarCliente(cn, cita.getIdCliente());
             try (PreparedStatement ps = cn.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) {
@@ -56,6 +58,9 @@ public class CitaTecnicaDAO implements CrudRepository<CitaTecnica, Integer> {
     public boolean actualizar(CitaTecnica cita) throws SQLException {
         validar(cita);
         validarId(cita.getIdCita(), "cita");
+        Optional<CitaTecnica> anterior = buscarPorId(cita.getIdCita());
+        if (anterior.isEmpty()) return false;
+        validarProgramacion(cita, anterior.get());
         try (Connection cn = ConexionBD.abrirConexion()) {
             comprobarCliente(cn, cita.getIdCliente());
             try (PreparedStatement ps = cn.prepareStatement(SQL_UPDATE)) {
@@ -190,27 +195,24 @@ public class CitaTecnicaDAO implements CrudRepository<CitaTecnica, Integer> {
     }
 
     private void validar(CitaTecnica cita) throws SQLException {
-        if (cita == null) throw new SQLException("Debe proporcionar una cita.", "22023");
-        validarId(cita.getIdCliente(), "cliente");
-        if (cita.getFecha() == null) throw new SQLException("La fecha es obligatoria.", "22023");
-        if (cita.getHora() == null) throw new SQLException("La hora es obligatoria.", "22023");
-        validarTexto(cita.getTipoServicio(), "El tipo de servicio", 80);
-        validarTexto(cita.getDescripcion(), "La descripción", 255);
-        validarEstado(cita.getEstado());
+        try {
+            Validador.validarCita(cita);
+        } catch (IllegalArgumentException e) {
+            throw new SQLException(e.getMessage(), "22023", e);
+        }
+    }
+
+    private void validarProgramacion(CitaTecnica cita, CitaTecnica anterior) throws SQLException {
+        try {
+            Validador.validarProgramacion(cita, anterior);
+        } catch (IllegalArgumentException e) {
+            throw new SQLException(e.getMessage(), "22023", e);
+        }
     }
 
     private void validarId(Integer id, String entidad) throws SQLException {
         if (id == null || id <= 0) {
             throw new SQLException("Debe seleccionar un ID de " + entidad + " válido.", "22023");
-        }
-    }
-
-    private void validarTexto(String texto, String campo, int maximo) throws SQLException {
-        if (texto == null || texto.isBlank()) {
-            throw new SQLException(campo + " es obligatorio.", "22023");
-        }
-        if (texto.trim().codePointCount(0, texto.trim().length()) > maximo) {
-            throw new SQLException(campo + " no puede superar " + maximo + " caracteres.", "22023");
         }
     }
 

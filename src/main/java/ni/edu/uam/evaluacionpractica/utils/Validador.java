@@ -3,14 +3,17 @@ package ni.edu.uam.evaluacionpractica.utils;
 import ni.edu.uam.evaluacionpractica.modelocrud.model.CitaTecnica;
 import ni.edu.uam.evaluacionpractica.modelocrud.model.Cliente;
 
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Validador {
+public class    Validador {
 
     private static final Pattern EMAIL = Pattern.compile(
             "^[A-Za-z0-9_+%-]+(?:\\.[A-Za-z0-9_+%-]+)*@"
@@ -91,6 +94,27 @@ public class Validador {
         if (!esEstadoValido(cita.getEstado())) {
             throw new IllegalArgumentException(
                     "Seleccione un estado: Pendiente, En proceso, Finalizada o Cancelada.");
+        }
+    }
+
+    /** Al crear o reprogramar se exige un horario vigente. Permite editar el historial. */
+    public static void validarProgramacion(CitaTecnica cita, CitaTecnica anterior) {
+        validarProgramacion(cita, anterior, Clock.systemDefaultZone());
+    }
+
+    static void validarProgramacion(CitaTecnica cita, CitaTecnica anterior, Clock reloj) {
+        validarCita(cita);
+        boolean conservaHorario = anterior != null
+                && anterior.getIdCita() != null
+                && Objects.equals(cita.getIdCita(), anterior.getIdCita())
+                && Objects.equals(cita.getIdCliente(), anterior.getIdCliente())
+                && Objects.equals(cita.getFecha(), anterior.getFecha())
+                && Objects.equals(cita.getHora(), anterior.getHora());
+        // El formulario captura minutos, sin segundos.
+        LocalDateTime ahora = LocalDateTime.now(reloj).truncatedTo(ChronoUnit.MINUTES);
+        if (!conservaHorario && cita.getFecha().atTime(cita.getHora()).isBefore(ahora)) {
+            throw new IllegalArgumentException(
+                    "No se puede programar una cita en una fecha u hora pasada.");
         }
     }
 

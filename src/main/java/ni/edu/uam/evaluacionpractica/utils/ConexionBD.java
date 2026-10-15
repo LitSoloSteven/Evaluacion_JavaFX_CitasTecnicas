@@ -13,7 +13,7 @@ public final class ConexionBD {
     // --- Fallbacks (solo si no hay .env ni variables de entorno) -------
     private static final String DEFAULT_URL      = "jdbc:postgresql://localhost:5432/gestion_citas";
     private static final String DEFAULT_USER     = "postgres";
-    private static final String DEFAULT_PASSWORD = "postgres";
+    private static final String DEFAULT_PASSWORD = "admin";
     private static final String DRIVER_CLASS     = "org.postgresql.Driver";
 
     private static final String URL;
