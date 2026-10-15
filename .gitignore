@@ -40,11 +40,7 @@ build/
 
 # --- Entorno / credenciales -----------------------------------------
 .env
-.env.local
-.env.*.local
-
-# Pero el ejemplo SÍ se versiona (plantilla sin secretos)
-!.env.example
+.env.*
 
 # --- Java / Maven ---------------------------------------------------
 *.class
