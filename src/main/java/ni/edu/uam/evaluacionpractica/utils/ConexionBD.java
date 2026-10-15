@@ -67,6 +67,11 @@ public final class ConexionBD {
         return conexion;
     }
 
+    /** Abre una conexión independiente que el DAO debe cerrar con try-with-resources. */
+    public static Connection abrirConexion() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
     /** Cierra la conexión global. Llamar desde el {@code stop()} de la App. */
     public static void cerrar() {
         if (conexion != null) {

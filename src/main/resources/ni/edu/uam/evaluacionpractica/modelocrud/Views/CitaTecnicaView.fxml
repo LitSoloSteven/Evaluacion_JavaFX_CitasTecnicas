@@ -1,65 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="ni.edu.uam.evaluacionpractica.modelocrud.Controllers.CitaTecnicaController"
-            prefWidth="1000" prefHeight="620">
+            prefWidth="1120" prefHeight="700">
     <padding>
         <Insets top="15" right="15" bottom="15" left="15"/>
     </padding>
-
     <left>
         <VBox spacing="8" prefWidth="290" minWidth="290">
             <padding>
                 <Insets right="15"/>
             </padding>
-
             <Label text="Datos de la cita" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-
             <Label text="Cliente *"/>
-            <ComboBox fx:id="cmbCliente" maxWidth="Infinity" promptText="Seleccione un cliente"
-                      onShowing="#onClientesComboShowing"/>
-
+            <ComboBox fx:id="cmbCliente" promptText="Seleccione un cliente" maxWidth="Infinity"/>
             <Label text="Fecha *"/>
-            <DatePicker fx:id="dpFecha" maxWidth="Infinity" promptText="dd/mm/aaaa"/>
-
-            <Label text="Hora (HH:mm) *"/>
-            <TextField fx:id="txtHora" promptText="Ej. 14:30"/>
-
+            <DatePicker fx:id="dpFecha" promptText="dd/MM/aaaa" maxWidth="Infinity"/>
+            <Label text="Hora *"/>
+            <TextField fx:id="txtHora" promptText="HH:mm, ej. 14:30"/>
             <Label text="Tipo de servicio *"/>
             <TextField fx:id="txtTipoServicio" promptText="Ej. Mantenimiento preventivo"/>
-
             <Label text="Descripción *"/>
-            <TextArea fx:id="txtDescripcion" prefRowCount="3" wrapText="true"
-                      promptText="Detalle del problema o servicio"/>
-
+            <TextArea fx:id="txtDescripcion" promptText="Describa el trabajo solicitado"
+                      prefRowCount="4" wrapText="true"/>
             <Label text="Estado *"/>
-            <ComboBox fx:id="cmbEstado" maxWidth="Infinity" promptText="Seleccione un estado">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Pendiente"/>
-                        <String fx:value="En proceso"/>
-                        <String fx:value="Finalizada"/>
-                        <String fx:value="Cancelada"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
+            <ComboBox fx:id="cmbEstado" promptText="Seleccione un estado" maxWidth="Infinity"/>
             <FlowPane hgap="8" vgap="8">
                 <padding>
                     <Insets top="10"/>
@@ -67,49 +36,40 @@
                 <Button fx:id="btnGuardar" text="Guardar" onAction="#onGuardar" prefWidth="130"/>
                 <Button fx:id="btnActualizar" text="Actualizar" onAction="#onActualizar" prefWidth="130"/>
                 <Button fx:id="btnEliminar" text="Eliminar" onAction="#onEliminar" prefWidth="130"/>
-                <Button fx:id="btnLimpiar" text="Nuevo / Limpiar" onAction="#onLimpiar" prefWidth="130"/>
+                <Button text="Nuevo / Limpiar" onAction="#onLimpiar" prefWidth="130"/>
             </FlowPane>
+            <Label text="* Campos obligatorios" style="-fx-text-fill: gray; -fx-font-size: 11px;"/>
         </VBox>
     </left>
-
     <center>
         <VBox spacing="10">
             <Label text="Listado de citas técnicas" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-
-            <HBox spacing="8" alignment="CENTER_LEFT">
-                <Label text="Estado:"/>
-                <ComboBox fx:id="cmbFiltroEstado" promptText="Todos">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Pendiente"/>
-                            <String fx:value="En proceso"/>
-                            <String fx:value="Finalizada"/>
-                            <String fx:value="Cancelada"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
+            <FlowPane hgap="8" vgap="8" alignment="CENTER_LEFT">
                 <Label text="Fecha:"/>
-                <DatePicker fx:id="dpFiltroFecha" promptText="Todas"/>
+                <DatePicker fx:id="dpFiltroFecha" promptText="Todas las fechas" prefWidth="145"/>
+                <Label text="Estado:"/>
+                <ComboBox fx:id="cmbFiltroEstado" promptText="Todos los estados" prefWidth="140"/>
                 <Button text="Filtrar" onAction="#onFiltrar"/>
                 <Button text="Limpiar filtros" onAction="#onLimpiarFiltros"/>
-            </HBox>
-
+            </FlowPane>
             <TableView fx:id="tblCitas" VBox.vgrow="ALWAYS">
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                 </columnResizePolicy>
                 <columns>
                     <TableColumn fx:id="colId" text="ID" prefWidth="50" maxWidth="70"/>
-                    <TableColumn fx:id="colCliente" text="Cliente" prefWidth="200"/>
-                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="90"/>
-                    <TableColumn fx:id="colHora" text="Hora" prefWidth="70"/>
-                    <TableColumn fx:id="colServicio" text="Servicio" prefWidth="170"/>
+                    <TableColumn fx:id="colCliente" text="Cliente" prefWidth="150"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                    <TableColumn fx:id="colHora" text="Hora" prefWidth="60"/>
+                    <TableColumn fx:id="colTipoServicio" text="Servicio" prefWidth="140"/>
+                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="170"/>
                     <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
                 </columns>
                 <placeholder>
                     <Label text="No hay citas para mostrar"/>
                 </placeholder>
             </TableView>
+            <Label fx:id="lblTotal" text="Citas mostradas: 0" style="-fx-text-fill: gray;"/>
         </VBox>
     </center>
 </BorderPane>
