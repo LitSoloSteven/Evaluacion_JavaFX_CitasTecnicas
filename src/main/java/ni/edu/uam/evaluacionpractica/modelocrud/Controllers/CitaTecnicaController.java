@@ -178,7 +178,7 @@ public class CitaTecnicaController {
                 .descripcion(txtDescripcion.getText().trim())
                 .estado(cmbEstado.getValue())
                 .build();
-        Validador.validarCita(cita);
+        Validador.validarProgramacion(cita, citaSeleccionada);
         return cita;
     }
 
