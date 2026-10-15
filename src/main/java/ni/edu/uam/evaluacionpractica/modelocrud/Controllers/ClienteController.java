@@ -1,9 +1,9 @@
-package ni.edu.uam.evaluacionpractica.modelocrud;
+package ni.edu.uam.evaluacionpractica.modelocrud.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class ClienteController {
     @FXML
     private Label welcomeText;
 
