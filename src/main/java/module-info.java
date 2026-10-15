@@ -3,7 +3,7 @@ module ni.edu.uam.evaluacionpractica.modelocrud {
     requires javafx.fxml;
     requires java.sql;
     requires static lombok;
-    requires io.github.cdimascio.dotenv.java; 
+    requires io.github.cdimascio.dotenv.java;
     requires org.postgresql.jdbc;
 
     opens ni.edu.uam.evaluacionpractica.modelocrud to javafx.fxml;
