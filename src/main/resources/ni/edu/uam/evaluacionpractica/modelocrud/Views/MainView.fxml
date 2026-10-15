@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.BorderPane?>
-
-<TabPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-         tabClosingPolicy="UNAVAILABLE">
-    <Tab text="Clientes">
-        <content>
-            <fx:include source="ClienteView.fxml"/>
-        </content>
-    </Tab>
-    <Tab text="Citas técnicas">
-        <content>
-            <fx:include source="CitaTecnicaView.fxml"/>
-        </content>
-    </Tab>
-</TabPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" style="-fx-font-family: &quot;Segoe UI&quot;, sans-serif; -fx-font-size: 13px; -fx-text-fill: #23334b; -fx-accent: #0d9488; -fx-focus-color: #0d9488; -fx-faint-focus-color: #0d948822; -fx-background-color: #f1f5f9;">
+ <top><HBox alignment="CENTER_LEFT" spacing="16" style="-fx-padding: 26 32; -fx-background-color: linear-gradient(to right, #102b46, #14566a);">
+  <StackPane minWidth="56" prefWidth="56" maxWidth="56" minHeight="56" prefHeight="56" maxHeight="56" style="-fx-background-color: linear-gradient(to bottom right, #99f6e4, #2dd4bf); -fx-background-radius: 18; -fx-border-color: #b6fff066; -fx-border-radius: 18; -fx-effect: dropshadow(gaussian, #00000030, 14, 0.1, 0, 4);">
+   <children>
+    <SVGPath content="M 4 4 H 32 Q 35 4 35 7 V 25 Q 35 28 32 28 H 4 Q 1 28 1 25 V 7 Q 1 4 4 4 Z M 12 34 H 24 M 18 28 V 34" fill="TRANSPARENT" stroke="#12243c" strokeWidth="2.4" strokeLineCap="ROUND" strokeLineJoin="ROUND"/>
+    <SVGPath content="M 13 8 L 8 13 L 13 18 M 23 8 L 28 13 L 23 18 M 20 6 L 16 20" fill="TRANSPARENT" stroke="#12243c" strokeWidth="2.2" strokeLineCap="ROUND" strokeLineJoin="ROUND" translateY="-3"/>
+    <StackPane alignment="CENTER" minWidth="18" prefWidth="18" maxWidth="18" minHeight="18" prefHeight="18" maxHeight="18" translateX="18" translateY="17" style="-fx-background-color: #ffffff; -fx-background-radius: 9;">
+     <children><SVGPath content="M 1 4 L 4 7 L 9 1" fill="TRANSPARENT" stroke="#0f766e" strokeWidth="2" strokeLineCap="ROUND" strokeLineJoin="ROUND"/></children>
+    </StackPane>
+   </children>
+  </StackPane>
+  <VBox spacing="5"><Label text="TecnoAsistencia" style="-fx-text-fill: #33465f; -fx-text-fill: white; -fx-font-size: 27px; -fx-font-weight: bold;"/><Label text="NICARAGUA  /  GESTI&#211;N DE SERVICIOS" style="-fx-text-fill: #33465f; -fx-text-fill: #9bc6d6; -fx-font-size: 11px;"/></VBox>
+  <Region HBox.hgrow="ALWAYS"/>
+ </HBox></top>
+ <center><TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: #f0f5fa; -fx-accent: #0d9488; -fx-focus-color: #0d9488; -fx-faint-focus-color: transparent;">
+  <Tab text="Clientes" style="-fx-padding: 12 24;"><graphic><SVGPath content="M 11 5 A 4 4 0 1 1 3 5 A 4 4 0 1 1 11 5 M 1 17 V 15 C 1 9 13 9 13 15 V 17" fill="TRANSPARENT" stroke="#52647c" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #52647c; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic><content><fx:include source="ClienteView.fxml"/></content></Tab>
+  <Tab text="Citas t&#233;cnicas" style="-fx-padding: 12 24;"><graphic><SVGPath content="M 1 3 H 15 V 17 H 1 Z M 1 7 H 15 M 5 1 V 5 M 11 1 V 5 M 5 11 H 7 M 10 11 H 12" fill="TRANSPARENT" stroke="#52647c" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #52647c; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic><content><fx:include source="CitaTecnicaView.fxml"/></content></Tab>
+ </TabPane></center>
+ <bottom><HBox style="-fx-padding: 10 28; -fx-background-color: #e5eef5; -fx-border-color: #ccdde9 transparent transparent transparent;"><Label text="TecnoAsistencia Nicaragua S.A." style="-fx-text-fill: #33465f;"/><Region HBox.hgrow="ALWAYS"/><Label text="Organiza &#183; Atiende &#183; Resuelve" style="-fx-text-fill: #33465f;"/></HBox></bottom>
+</BorderPane>

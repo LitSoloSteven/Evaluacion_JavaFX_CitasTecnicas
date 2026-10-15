@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -15,60 +17,62 @@
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="ni.edu.uam.evaluacionpractica.modelocrud.Controllers.ClienteController"
-            prefWidth="1000" prefHeight="620">
+            prefWidth="1200" prefHeight="740" style="-fx-font-family: 'Segoe UI'; -fx-font-size: 13px; -fx-text-fill: #23334b; -fx-accent: #0d9488; -fx-focus-color: #0d9488; -fx-faint-focus-color: #0d948822; -fx-background-color: #f0f5fa;">
     <padding>
-        <Insets top="15" right="15" bottom="15" left="15"/>
+        <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
 
     <left>
-        <VBox spacing="8" prefWidth="290" minWidth="290">
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="330" minWidth="330" style="-fx-background-color: transparent; -fx-padding: 0;"><content>
+        <VBox spacing="9" style="-fx-background-color: linear-gradient(to bottom, #effbf8, #ffffff); -fx-background-radius: 18; -fx-border-color: #cbdfe6; -fx-border-radius: 18; -fx-effect: dropshadow(gaussian, #18364b0d, 12, 0.1, 0, 3);">
             <padding>
-                <Insets right="15"/>
+                <Insets top="22" right="22" bottom="22" left="22"/>
             </padding>
 
-            <Label text="Datos del cliente" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Label text="Datos del cliente" style="-fx-text-fill: #125469; -fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+            <Label text="Informaci&#243;n de contacto y estado." wrapText="true" style="-fx-text-fill: #7b8da3; -fx-font-size: 12px; -fx-padding: 0 0 8 0;"/>
 
-            <Label text="Nombres *"/>
-            <TextField fx:id="txtNombres" promptText="Ej. Juan Carlos"/>
+            <Label text="Nombres" style="-fx-text-fill: #33465f;"/>
+            <TextField fx:id="txtNombres" promptText="Ej. Juan Carlos" style="-fx-background-color: #f7fafc; -fx-border-color: #cbdce7; -fx-border-radius: 7; -fx-background-radius: 7; -fx-pref-height: 36; -fx-prompt-text-fill: #8290a3; -fx-padding: 8 10;"/>
 
-            <Label text="Apellidos *"/>
-            <TextField fx:id="txtApellidos" promptText="Ej. Pérez López"/>
+            <Label text="Apellidos" style="-fx-text-fill: #33465f;"/>
+            <TextField fx:id="txtApellidos" promptText="Ej. Pérez López" style="-fx-background-color: #f7fafc; -fx-border-color: #cbdce7; -fx-border-radius: 7; -fx-background-radius: 7; -fx-pref-height: 36; -fx-prompt-text-fill: #8290a3; -fx-padding: 8 10;"/>
 
-            <Label text="Teléfono *"/>
-            <TextField fx:id="txtTelefono" promptText="8 dígitos, ej. 88888888"/>
+            <Label text="Teléfono" style="-fx-text-fill: #33465f;"/>
+            <TextField fx:id="txtTelefono" promptText="8 dígitos, ej. 88888888" style="-fx-background-color: #f7fafc; -fx-border-color: #cbdce7; -fx-border-radius: 7; -fx-background-radius: 7; -fx-pref-height: 36; -fx-prompt-text-fill: #8290a3; -fx-padding: 8 10;"/>
 
-            <Label text="Correo electrónico *"/>
-            <TextField fx:id="txtCorreo" promptText="ejemplo@correo.com"/>
+            <Label text="Correo electrónico" style="-fx-text-fill: #33465f;"/>
+            <TextField fx:id="txtCorreo" promptText="ejemplo@correo.com" style="-fx-background-color: #f7fafc; -fx-border-color: #cbdce7; -fx-border-radius: 7; -fx-background-radius: 7; -fx-pref-height: 36; -fx-prompt-text-fill: #8290a3; -fx-padding: 8 10;"/>
 
-            <CheckBox fx:id="chkActivo" text="Cliente activo" selected="true"/>
+            <CheckBox fx:id="chkActivo" text="Cliente activo" selected="true" style="-fx-padding: 10 0;"/>
 
             <FlowPane hgap="8" vgap="8">
                 <padding>
                     <Insets top="10"/>
                 </padding>
-                <Button fx:id="btnGuardar" text="Guardar" onAction="#onGuardar" prefWidth="130"/>
-                <Button fx:id="btnActualizar" text="Actualizar" onAction="#onActualizar" prefWidth="130"/>
-                <Button fx:id="btnEliminar" text="Eliminar" onAction="#onEliminar" prefWidth="130"/>
-                <Button fx:id="btnLimpiar" text="Nuevo / Limpiar" onAction="#onLimpiar" prefWidth="130"/>
+                <Button fx:id="btnGuardar" text="Guardar" onAction="#onGuardar" prefWidth="130" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 38; -fx-effect: dropshadow(gaussian, #0f766e30, 6, 0, 0, 2); -fx-background-color: linear-gradient(to right, #0f766e, #0d9488); -fx-text-fill: white;"><graphic><SVGPath content="M 1 1 H 14 V 15 H 1 Z M 4 1 V 6 H 11 V 1 M 4 15 V 10 H 11 V 15" fill="TRANSPARENT" stroke="#ffffff" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #ffffff; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
+                <Button fx:id="btnActualizar" text="Actualizar" onAction="#onActualizar" prefWidth="130" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 36; -fx-background-color: #deecfa; -fx-text-fill: #215e91; -fx-border-color: #bbd6ef;"><graphic><SVGPath content="M 2 11 L 1 15 L 5 14 L 15 4 L 12 1 Z M 10 3 L 13 6" fill="TRANSPARENT" stroke="#215e91" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #215e91; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
+                <Button fx:id="btnEliminar" text="Eliminar" onAction="#onEliminar" prefWidth="130" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 36; -fx-background-color: #fff1f2; -fx-text-fill: #be123c; -fx-border-color: #fecdd3;"><graphic><SVGPath content="M 2 4 H 14 M 6 4 V 1 H 10 V 4 M 4 4 L 5 15 H 11 L 12 4 M 7 7 V 12 M 9 7 V 12" fill="TRANSPARENT" stroke="#be123c" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #be123c; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
+                <Button fx:id="btnLimpiar" text="Nuevo" onAction="#onLimpiar" prefWidth="130" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 36; -fx-background-color: #edf0f7; -fx-text-fill: #4c5d7a; -fx-border-color: #d2daea;"><graphic><SVGPath content="M 8 1 V 15 M 1 8 H 15" fill="TRANSPARENT" stroke="#52647c" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #52647c; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
             </FlowPane>
-
-            <Label text="* Campos obligatorios" style="-fx-text-fill: gray; -fx-font-size: 11px;"/>
         </VBox>
+        </content></ScrollPane>
     </left>
 
     <center>
-        <VBox spacing="10">
-            <Label text="Listado de clientes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <VBox spacing="16" style="-fx-background-color: white; -fx-background-radius: 18; -fx-border-color: #cbdfe6; -fx-border-radius: 18; -fx-effect: dropshadow(gaussian, #18364b0d, 12, 0.1, 0, 3); -fx-padding: 22;">
+            <BorderPane.margin><Insets left="20"/></BorderPane.margin>
+            <Label text="Directorio de clientes" style="-fx-text-fill: #125469; -fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
 
             <HBox spacing="8" alignment="CENTER_LEFT">
-                <Label text="Buscar:"/>
+                <Label text="Buscar:" style="-fx-text-fill: #33465f;"/>
                 <TextField fx:id="txtBuscar" promptText="Nombres, apellidos o correo..."
-                           HBox.hgrow="ALWAYS" onKeyReleased="#onBuscar" onAction="#onBuscar"/>
-                <Button text="Buscar" onAction="#onBuscar"/>
-                <Button text="Limpiar búsqueda" onAction="#onLimpiarBusqueda"/>
+                           HBox.hgrow="ALWAYS" onKeyReleased="#onBuscar" onAction="#onBuscar" style="-fx-background-color: #f7fafc; -fx-border-color: #cbdce7; -fx-border-radius: 7; -fx-background-radius: 7; -fx-pref-height: 36; -fx-prompt-text-fill: #8290a3; -fx-padding: 8 10;"/>
+                <Button text="Buscar" onAction="#onBuscar" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 36; -fx-background-color: #dcf4ef; -fx-text-fill: #0f766e; -fx-border-color: #afe1d6;"><graphic><SVGPath content="M 11 6 A 5 5 0 1 1 1 6 A 5 5 0 1 1 11 6 M 10 10 L 15 15" fill="TRANSPARENT" stroke="#0f766e" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #0f766e; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
+                <Button text="Limpiar búsqueda" onAction="#onLimpiarBusqueda" style="-fx-cursor: hand; -fx-padding: 9 12; -fx-background-radius: 7; -fx-border-radius: 7; -fx-font-weight: bold; -fx-graphic-text-gap: 8; -fx-min-height: 36; -fx-background-color: #f0f5fa; -fx-text-fill: #33465f; -fx-border-color: #dce4ed;"><graphic><SVGPath content="M 3 3 L 13 13 M 13 3 L 3 13" fill="TRANSPARENT" stroke="#52647c" strokeWidth="1.6" strokeLineCap="ROUND" strokeLineJoin="ROUND" style="-fx-stroke: #52647c; -fx-stroke-width: 1.6; -fx-stroke-line-cap: round; -fx-stroke-line-join: round;"/></graphic></Button>
             </HBox>
 
-            <TableView fx:id="tblClientes" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tblClientes" fixedCellSize="42" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-border-color: #cbdce7; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 0; -fx-base: #e7f0f6; -fx-control-inner-background: #ffffff; -fx-control-inner-background-alt: #f2f8fb; -fx-selection-bar: #c3ede4; -fx-selection-bar-non-focused: #e0f3ee; -fx-selection-bar-text: #123f46;">
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                 </columnResizePolicy>
@@ -81,11 +85,11 @@
                     <TableColumn fx:id="colActivo" text="Activo" prefWidth="60" maxWidth="80"/>
                 </columns>
                 <placeholder>
-                    <Label text="No hay clientes para mostrar"/>
+                    <VBox alignment="CENTER" spacing="8"><Label text="Tu directorio empieza aqu&#237;" style="-fx-text-fill: #52647c; -fx-font-size: 16px; -fx-font-weight: bold;"/><Label text="Registra un cliente para verlo en este listado." style="-fx-text-fill: #718096; -fx-font-size: 11px; -fx-padding: 5 0;"/></VBox>
                 </placeholder>
             </TableView>
 
-            <Label fx:id="lblTotal" style="-fx-text-fill: gray;"/>
+            <Label fx:id="lblTotal" style="-fx-text-fill: #0f766e; -fx-font-weight: bold; -fx-background-color: #d9f4ec; -fx-background-radius: 6; -fx-padding: 8 12;"/>
         </VBox>
     </center>
 </BorderPane>
